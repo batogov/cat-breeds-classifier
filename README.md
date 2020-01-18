@@ -11,11 +11,11 @@ Read the [Russian version](./README_RU.md) of the document 🇷🇺
 
 At this moment, the problem of image classification is best solved by **convolutional neural networks** (CNN). The main idea of convolutional neural networks lies in the alternation of convolutional layers and subsampling layers.
 
-Работа свёрточной нейронной сети обычно интерпретируется как переход от конкретных особенностей изображения к более абстрактным деталям, и далее к ещё более абстрактным деталям вплоть до выделения понятий высокого уровня. При этом сеть самонастраивается и вырабатывает сама необходимую иерархию абстрактных признаков (последовательности карт признаков), фильтруя маловажные детали и выделяя существенное.
+The work of a convolutional neural network is usually interpreted as a transition from specific features of an image to more abstract details, and then to even more abstract details, up to the allocation of high-level concepts. At the same time, the network adjusts itself and develops the necessary hierarchy of abstract features, filtering unimportant details and highlighting the essential ones.
 
-CNN (как и любая нейронная сеть) для обучения на более или менее большой выборке данных требует больших затрат мощности (CPU или GPU) и времени. Чтобы избежать этого, в данной работе была использована предобученная свёрточная нейронная сеть **Inception** от **Google**.
+CNN (like any neural network) requires a lot of CPU or GPU resources and time to train on a large sample of data. To avoid this, I used the pre-trained convolutional neural network **Inception** from **Google**.
 
-Процесс «дообучения» нейронной сети называется **transfer learning**. По факту, мы берём полностью готовую, обученную на огромной количестве изображений (например, на базе ImageNet) модель и переобучаем (с использованием уже наших изображений) последний её слой.
+The process of additional neural network training is called **transfer learning**. In fact, I take a completely ready-made model trained on a huge number of images (for example, based on ImageNet) and retrain (using our images) the last layer of it.
 
 ## About dataset
 
@@ -23,9 +23,9 @@ In this work we used images of cats of the following breeds: Abyssinian, Bengal,
 
 Since this neural network is able to work only with images in jpeg format, then it was necessary to delete all images of other formats. For finding and deleting such files (e.g. gif files that were renamed to jpeg) is used *check_file_extension.py* script.
 
-## Обучение
+## Transfer learning
 
-To start the process of transfer learning the network is used bash script *train.sh*. В этом файле необходимо указать путь до файла *retrain.py* из *examples/image_retraining* репозитория библиотеки tensorflow, пути до изображений, служебных файлов и количество итераций обучения.
+To start the process of transfer learning the network is used bash script *train.sh*. In this file, you must specify the path to the file *examples/image_retraining/retrain.py* form the tensorflow repository, the path to images and service files, and the number of training iterations.
 
 ## Prediction
 
